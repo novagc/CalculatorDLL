@@ -16,6 +16,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -39,10 +40,11 @@
             <Label x:Name="N0" Background="White" Grid.Row="3" Grid.Column="1" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="N0_MouseDown" MouseUp="Label_MouseUp">0</Label>
             <Label x:Name="C4" Background="White" Grid.Row="3" Grid.Column="2" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C4_MouseDown" MouseUp="Label_MouseUp">,</Label>
             <Label x:Name="C5" Background="White" Grid.Row="3" Grid.Column="3" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C5_MouseDown" MouseUp="Label_MouseUp">+</Label>
+            <Label x:Name="C10" Background="White" Grid.Row="4" Grid.Column="0" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C10_MouseDown" MouseUp="Label_MouseUp">🛈</Label>
+            <Label x:Name="C11" Background="White" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C11_MouseDown" MouseUp="Label_MouseUp">=</Label>
         </Grid>
         <Grid x:Name="ExtraGrid" Margin="300,61,10,9.8">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -52,7 +54,6 @@
             <Label x:Name="C7" Background="White" Grid.Row="1" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C7_MouseDown" MouseUp="Label_MouseUp">cos</Label>
             <Label x:Name="C8" Background="White" Grid.Row="2" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C8_MouseDown" MouseUp="Label_MouseUp">tan</Label>
             <Label x:Name="C9" Background="White" Grid.Row="3" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C9_MouseDown" MouseUp="Label_MouseUp">cot</Label>
-            <Label x:Name="C10" Background="White" Grid.Row="4" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C10_MouseDown" MouseUp="Label_MouseUp">🛈</Label>
         </Grid>
 
     </Grid>
