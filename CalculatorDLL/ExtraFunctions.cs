@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System.Reflection;
 
 namespace CalculatorDLL
 {
@@ -10,15 +11,15 @@ namespace CalculatorDLL
 
         public ExtraFunctions()
         {
-            var ExtraDLL = Assembly.LoadFile(@"./extra.dll");
+            var ExtraDLL = Assembly.LoadFile($"{Directory.GetCurrentDirectory()}/Extra.dll");
             var funcsType = ExtraDLL.GetType("Extra.Functions");
 
             _methods = new[]
             {
-                funcsType.GetMethod("Sin", BindingFlags.Static),
-                funcsType.GetMethod("Cos", BindingFlags.Static),
-                funcsType.GetMethod("Tan", BindingFlags.Static),
-                funcsType.GetMethod("Cot", BindingFlags.Static)
+                funcsType.GetMethod("Sin"),
+                funcsType.GetMethod("Cos"),
+                funcsType.GetMethod("Tan"),
+                funcsType.GetMethod("Cot")
             };
 
             Instance = this;

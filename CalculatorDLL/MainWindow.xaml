@@ -9,7 +9,7 @@
     <Grid>
         <Canvas Height="50" VerticalAlignment="Top" Margin="0,0,-0.4,0" Background="#FFF4F4F4"/>
 
-        <TextBlock x:Name="ConsoleBlock" Margin="10,10,10,0" Text="0123456789+-*/" VerticalAlignment="Top" Height="36" IsEnabled="False" FontSize="20" TextAlignment="Right" FontFamily="Segoe UI Black" FontWeight="Bold"/>
+        <TextBlock x:Name="ConsoleBlock" Margin="10,10,10,0" VerticalAlignment="Top" Height="36" IsEnabled="False" FontSize="20" TextAlignment="Right" FontFamily="Segoe UI Black" FontWeight="Bold" Text="0"/>
         <Grid x:Name="BaseGrid" Margin="10,61,110,9.8">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -41,7 +41,8 @@
             <Label x:Name="C4" Background="White" Grid.Row="3" Grid.Column="2" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C4_MouseDown" MouseUp="Label_MouseUp">,</Label>
             <Label x:Name="C5" Background="White" Grid.Row="3" Grid.Column="3" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C5_MouseDown" MouseUp="Label_MouseUp">+</Label>
             <Label x:Name="C10" Background="White" Grid.Row="4" Grid.Column="0" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C10_MouseDown" MouseUp="Label_MouseUp">🛈</Label>
-            <Label x:Name="C11" Background="White" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C11_MouseDown" MouseUp="Label_MouseUp">=</Label>
+            <Label x:Name="C11" Background="White" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C11_MouseDown" MouseUp="Label_MouseUp">=</Label>
+            <Label x:Name="C12" Background="White" Grid.Row="4" Grid.Column="3"  Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseDown="C12_MouseDown" MouseUp="Label_MouseUp">Cl</Label>
         </Grid>
         <Grid x:Name="ExtraGrid" Margin="300,61,10,9.8">
             <Grid.RowDefinitions>

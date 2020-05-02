@@ -1,31 +1,21 @@
-﻿using System.Runtime.InteropServices;
-
-namespace CalculatorDLL
+﻿namespace CalculatorDLL
 {
     public static class BasicFunctions
     {
-        [DllImport("./basic.dll")]
-        public static extern int PlusInt(int f, int s);
+        public static int PlusInt(int f, int s) => Basic.BasicFunctions.PlusInt(f, s);
 
-        [DllImport("./basic.dll")]
-        public static extern int MinusInt(int f, int s);
+        public static int MinusInt(int f, int s) => Basic.BasicFunctions.MinusInt(f, s);
 
-        [DllImport("./basic.dll")]
-        public static extern int DivideInt(int f, int s);
+        public static int DivideInt(int f, int s) => Basic.BasicFunctions.DivideInt(f, s);
 
-        [DllImport("./basic.dll")]
-        public static extern int MultiplyInt(int f, int s);
+        public static int MultiplyInt(int f, int s) => Basic.BasicFunctions.MultiplyInt(f, s);
 
-        [DllImport("./basic.dll")]
-        public static extern double PlusDouble(double f, double s);
+        public static double PlusDouble(double f, double s) => Basic.BasicFunctions.PlusDouble(f, s);
 
-        [DllImport("./basic.dll")]
-        public static extern double MinusDouble(double f, double s);
+        public static double MinusDouble(double f, double s) => Basic.BasicFunctions.MinusDouble(f, s);
 
-        [DllImport("./basic.dll")]
-        public static extern double DivideDouble(double f, double s);
+        public static double DivideDouble(double f, double s) => Basic.BasicFunctions.DivideDouble(f, s);
 
-        [DllImport("./basic.dll")]
-        public static extern double MultiplyDouble(double f, double s);
+        public static double MultiplyDouble(double f, double s) => Basic.BasicFunctions.MultiplyDouble(f, s);
     }
 }

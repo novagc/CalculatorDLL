@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,10 +33,13 @@ namespace CalculatorDLL
         public MainWindow()
         {
             InitializeComponent();
+
             _isBig = Math.Abs(Width - 300) < 1;
             _end = true;
             _selectedFunc = -1;
             _numbers = new object[4];
+
+            new ExtraFunctions();
         }
 
         private void Label_MouseEnter(object sender, MouseEventArgs e)
@@ -273,10 +277,7 @@ namespace CalculatorDLL
             _selectedFunc = -1;
             _end = true;
 
-            if ((bool) _numbers[1])
-                ExtraFunctions.Instance.Sin((double) _numbers[0]);
-            else
-                ExtraFunctions.Instance.Sin(Convert.ToDouble((int) _numbers[0]));
+            ConsoleBlock.Text = ExtraFunctions.Instance.Sin(Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
         }
 
         private void C7_MouseDown(object sender, MouseEventArgs e)
@@ -288,10 +289,7 @@ namespace CalculatorDLL
             _selectedFunc = -1;
             _end = true;
 
-            if ((bool)_numbers[1])
-                ExtraFunctions.Instance.Cos((double)_numbers[0]);
-            else
-                ExtraFunctions.Instance.Cos(Convert.ToDouble((int)_numbers[0]));
+            ConsoleBlock.Text = ExtraFunctions.Instance.Cos(Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
         }
 
         private void C8_MouseDown(object sender, MouseEventArgs e)
@@ -303,10 +301,7 @@ namespace CalculatorDLL
             _selectedFunc = -1;
             _end = true;
 
-            if ((bool)_numbers[1])
-                ExtraFunctions.Instance.Tan((double)_numbers[0]);
-            else
-                ExtraFunctions.Instance.Tan(Convert.ToDouble((int)_numbers[0]));
+            ConsoleBlock.Text = ExtraFunctions.Instance.Tan(Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
         }
 
         private void C9_MouseDown(object sender, MouseEventArgs e)
@@ -318,10 +313,7 @@ namespace CalculatorDLL
             _selectedFunc = -1;
             _end = true;
 
-            if ((bool)_numbers[1])
-                ExtraFunctions.Instance.Cot((double)_numbers[0]);
-            else
-                ExtraFunctions.Instance.Cot(Convert.ToDouble((int)_numbers[0]));
+            ConsoleBlock.Text = ExtraFunctions.Instance.Cot(Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
         }
 
         private void C10_MouseDown(object sender, MouseEventArgs e)
@@ -340,15 +332,24 @@ namespace CalculatorDLL
             {
                 ReadNumber();
 
-                
+                ConsoleBlock.Text = Calculate();
+                _selectedFunc = -1;
+                _end = true;
             }
+        }
+
+        private void C12_MouseDown(object sender, MouseEventArgs e)
+        {
+            _selectedFunc = -1;
+            _end = true;
+            ConsoleBlock.Text = "0";
         }
 
         private string Calculate()
         {
             if (_selectedFunc == 0)
             {
-                if ((bool)_numbers[1] && (bool)_numbers[3])
+                if ((bool)_numbers[1] || (bool)_numbers[3])
                 {
                     return BasicFunctions.DivideDouble(
                         (bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0],
@@ -361,7 +362,7 @@ namespace CalculatorDLL
             }
             else if (_selectedFunc == 1)
             {
-                if ((bool)_numbers[1] && (bool)_numbers[3])
+                if ((bool)_numbers[1] || (bool)_numbers[3])
                 {
                     return BasicFunctions.MultiplyDouble(
                         (bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0],
@@ -374,7 +375,7 @@ namespace CalculatorDLL
             }
             else if (_selectedFunc == 2)
             {
-                if ((bool)_numbers[1] && (bool)_numbers[3])
+                if ((bool)_numbers[1] || (bool)_numbers[3])
                 {
                     return BasicFunctions.MinusDouble(
                         (bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0],
@@ -387,7 +388,7 @@ namespace CalculatorDLL
             }
             else
             {
-                if ((bool)_numbers[1] && (bool)_numbers[3])
+                if ((bool)_numbers[1] || (bool)_numbers[3])
                 {
                     return BasicFunctions.PlusDouble(
                         (bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0],
@@ -403,8 +404,8 @@ namespace CalculatorDLL
         private void ReadNumber()
         {
             int offset = _selectedFunc == -1 ? 0 : 2;
-
-            if (_isDouble)
+            
+            if ((_isDouble = ConsoleBlock.Text.Contains(",")))
                 _numbers[offset] = double.Parse(ConsoleBlock.Text);
             else
                 _numbers[offset] = int.Parse(ConsoleBlock.Text);
