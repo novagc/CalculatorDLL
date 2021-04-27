@@ -17,7 +17,19 @@ using System.Windows.Shapes;
 namespace CalculatorDLL
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainWindow.xaml<br/><br/>
+    /// С0    /       <br/>
+    /// С1    *       <br/>
+    /// С2    -       <br/>
+    /// С3    Extra   <br/>
+    /// С4    ,       <br/>
+    /// C5    +       <br/>
+    /// M0    sin     <br/>
+    /// M1    cos     <br/>
+    /// M2    tan     <br/>
+    /// M3    cot     <br/>
+    /// C10   info    <br/>
+    /// C11   =       <br/>
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -34,12 +46,36 @@ namespace CalculatorDLL
         {
             InitializeComponent();
 
-            _isBig = Math.Abs(Width - 300) < 1;
+            _isBig = true;
             _end = true;
             _selectedFunc = -1;
             _numbers = new object[4];
 
-            new ExtraFunctions();
+            CalculatorWindow.Width = (_isBig = !_isBig) ? 400 : 300;
+            BaseGrid.Margin = new Thickness(10, 61, _isBig ? 110 : 10, 9.8);
+            ExtraGrid.Visibility = _isBig ? Visibility.Visible : Visibility.Hidden;
+
+            try
+            {
+                var ef = new ExtraFunctions();
+
+                var temp = new[] { M0, M1, M2, M3 };
+                
+                foreach (var button in temp.Skip(ef.ExtraFuncCount))
+                {
+                    button.Visibility = Visibility.Hidden;
+                }
+
+                for (int i = 0; i < ef.ExtraFuncCount; i++)
+                {
+                    temp[i].Content = ef.GetFuncName(i);
+                }
+
+            }
+            catch
+            {
+                C3.Visibility = Visibility.Hidden;
+            }
         }
 
         private void Label_MouseEnter(object sender, MouseEventArgs e)
@@ -277,7 +313,7 @@ namespace CalculatorDLL
             _selectedFunc = -1;
             _end = true;
 
-            ConsoleBlock.Text = ExtraFunctions.Instance.Sin(Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
+            ConsoleBlock.Text = ExtraFunctions.Instance.ExecExtraFunc(0,Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
         }
 
         private void C7_MouseDown(object sender, MouseEventArgs e)
@@ -289,7 +325,7 @@ namespace CalculatorDLL
             _selectedFunc = -1;
             _end = true;
 
-            ConsoleBlock.Text = ExtraFunctions.Instance.Cos(Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
+            ConsoleBlock.Text = ExtraFunctions.Instance.ExecExtraFunc(1, Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
         }
 
         private void C8_MouseDown(object sender, MouseEventArgs e)
@@ -301,7 +337,7 @@ namespace CalculatorDLL
             _selectedFunc = -1;
             _end = true;
 
-            ConsoleBlock.Text = ExtraFunctions.Instance.Tan(Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
+            ConsoleBlock.Text = ExtraFunctions.Instance.ExecExtraFunc(2, Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
         }
 
         private void C9_MouseDown(object sender, MouseEventArgs e)
@@ -313,7 +349,7 @@ namespace CalculatorDLL
             _selectedFunc = -1;
             _end = true;
 
-            ConsoleBlock.Text = ExtraFunctions.Instance.Cot(Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
+            ConsoleBlock.Text = ExtraFunctions.Instance.ExecExtraFunc(3, Convert.ToDouble((bool)_numbers[1] ? (double)_numbers[0] : (int)_numbers[0])).ToString();
         }
 
         private void C10_MouseDown(object sender, MouseEventArgs e)

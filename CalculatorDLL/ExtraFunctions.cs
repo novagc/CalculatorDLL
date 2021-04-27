@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace CalculatorDLL
@@ -7,30 +8,31 @@ namespace CalculatorDLL
     {
         public static ExtraFunctions Instance;
         
-        private MethodInfo[] _methods;
+        private readonly MethodInfo[] _methods;
+
+        public int ExtraFuncCount => _methods.Length;
 
         public ExtraFunctions()
         {
-            var ExtraDLL = Assembly.LoadFile($"{Directory.GetCurrentDirectory()}/Extra.dll");
-            var funcsType = ExtraDLL.GetType("Extra.Functions");
+            var dll = Assembly.LoadFile($"{Directory.GetCurrentDirectory()}/Extra.dll");
+            var funcsType = dll.GetType("Extra.Functions");
 
-            _methods = new[]
-            {
-                funcsType.GetMethod("Sin"),
-                funcsType.GetMethod("Cos"),
-                funcsType.GetMethod("Tan"),
-                funcsType.GetMethod("Cot")
-            };
+            _methods = funcsType.GetMethods()
+                .Where(x => 
+                    x.IsStatic && 
+                    !x.IsAbstract && 
+                    !x.IsConstructor && 
+                    x.IsPublic && 
+                    x.ReturnType == typeof(double) &&
+                    x.GetParameters().Length == 1 &&
+                    x.GetParameters()[0].ParameterType == typeof(double))
+                .Take(4)
+                .ToArray();
 
             Instance = this;
         }
 
-        public double Sin(double f) => (double)_methods[0].Invoke(null, new object[] { f });
-
-        public double Cos(double f) => (double)_methods[1].Invoke(null, new object[] { f });
-
-        public double Tan(double f) => (double)_methods[2].Invoke(null, new object[] { f });
-
-        public double Cot(double f) => (double)_methods[3].Invoke(null, new object[] { f });
+        public string GetFuncName(int funcNumber) => _methods[funcNumber].Name;
+        public double ExecExtraFunc(int funcNumber, double f) => (double)_methods[funcNumber].Invoke(null, new object[] { f });
     }
 }

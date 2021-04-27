@@ -51,10 +51,10 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Label x:Name="C6" Background="White" Grid.Row="0" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C6_MouseDown" MouseUp="Label_MouseUp">sin</Label>
-            <Label x:Name="C7" Background="White" Grid.Row="1" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C7_MouseDown" MouseUp="Label_MouseUp">cos</Label>
-            <Label x:Name="C8" Background="White" Grid.Row="2" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C8_MouseDown" MouseUp="Label_MouseUp">tan</Label>
-            <Label x:Name="C9" Background="White" Grid.Row="3" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C9_MouseDown" MouseUp="Label_MouseUp">cot</Label>
+            <Label x:Name="M0" Background="White" Grid.Row="0" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C6_MouseDown" MouseUp="Label_MouseUp" Content="M0"/>
+            <Label x:Name="M1" Background="White" Grid.Row="1" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C7_MouseDown" MouseUp="Label_MouseUp" Content="M1"/>
+            <Label x:Name="M2" Background="White" Grid.Row="2" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C8_MouseDown" MouseUp="Label_MouseUp" Content="M2"/>
+            <Label x:Name="M3" Background="White" Grid.Row="3" Margin="1,1,1,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"  MouseDown="C9_MouseDown" MouseUp="Label_MouseUp" Content="M3"/>
         </Grid>
 
     </Grid>
